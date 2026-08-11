@@ -23,6 +23,8 @@ const fetchCategory = async (id) => {
 
 };
 
+
+
 module.exports = {
     fetchCategories,
     fetchCategory

@@ -99,6 +99,7 @@ const deleteCourse = asyncHandler(async (req, res) => {
         )
     );
 
+    
 });
 
 module.exports = {

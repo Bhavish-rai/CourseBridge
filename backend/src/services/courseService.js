@@ -14,9 +14,9 @@ const addCourse = async (courseData) => {
 
 };
 
-const fetchCourses = async () => {
+const fetchCourses = async (query) => {
 
-    return await getAllCourses();
+    return await getAllCourses(query);
 
 };
 
@@ -36,11 +36,13 @@ const editCourse = async (id, data, userId) => {
 
     const course = await getCourseById(id);
 
-    if (!course)
+    if (!course) {
         throw new ApiError(404, "Course not found");
+    }
 
-    if (course.user_id !== userId)
+    if (course.user_id !== userId) {
         throw new ApiError(403, "Unauthorized");
+    }
 
     return await updateCourse(id, data);
 
@@ -50,17 +52,17 @@ const removeCourse = async (id, userId) => {
 
     const course = await getCourseById(id);
 
-    if (!course)
+    if (!course) {
         throw new ApiError(404, "Course not found");
+    }
 
-    if (course.user_id !== userId)
+    if (course.user_id !== userId) {
         throw new ApiError(403, "Unauthorized");
+    }
 
     await deleteCourse(id);
 
 };
-
-
 
 module.exports = {
     addCourse,

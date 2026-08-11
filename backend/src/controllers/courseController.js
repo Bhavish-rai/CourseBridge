@@ -17,23 +17,35 @@ const createCourse = asyncHandler(async (req, res) => {
     });
 
     return res.status(201).json(
-        new ApiResponse(
-            201,
-            course,
-            "Course created successfully"
-        )
+        new ApiResponse(201, course, "Course created successfully")
     );
 
 });
 
 const getCourses = asyncHandler(async (req, res) => {
 
-    const courses = await fetchCourses();
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
+
+    const search = req.query.search || "";
+    const category = req.query.category || "";
+
+    const courses = await fetchCourses({
+        page,
+        limit,
+        search,
+        category
+    });
 
     return res.status(200).json(
         new ApiResponse(
             200,
-            courses,
+            {
+                page,
+                limit,
+                total: courses.length,
+                courses
+            },
             "Courses fetched successfully"
         )
     );

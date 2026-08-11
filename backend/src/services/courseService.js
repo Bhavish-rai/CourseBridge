@@ -60,6 +60,8 @@ const removeCourse = async (id, userId) => {
 
 };
 
+
+
 module.exports = {
     addCourse,
     fetchCourses,

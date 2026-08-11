@@ -9,4 +9,6 @@ router.use("/auth", authRoutes);
 
 router.use("/courses", courseRoutes);
 
+
+
 module.exports = router;

@@ -4,7 +4,8 @@ const helmet = require("helmet");
 const morgan = require("morgan");
 const cookieParser = require("cookie-parser");
 
-const authRoutes = require("./routes/authRoutes");
+const routes = require("./routes");
+
 const errorHandler = require("./middleware/errorHandler");
 
 const app = express();
@@ -30,7 +31,7 @@ app.get("/", (req, res) => {
 
 });
 
-app.use("/api/v1/auth", authRoutes);
+app.use("/api/v1", routes);
 
 app.use((req, res) => {
 

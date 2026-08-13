@@ -1,7 +1,32 @@
 const express = require("express");
 
 const router = express.Router();
-
+/**
+ * @swagger
+ * /auth/register:
+ *   post:
+ *     summary: Register a new user
+ *     tags:
+ *       - Authentication
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               fullName:
+ *                 type: string
+ *               username:
+ *                 type: string
+ *               email:
+ *                 type: string
+ *               password:
+ *                 type: string
+ *     responses:
+ *       201:
+ *         description: User registered successfully
+ */
 const {
     register,
     login,
@@ -10,9 +35,10 @@ const {
 
 const {
     registerValidation,
-    loginValidation,
-    validate
+    loginValidation
 } = require("../validators/authValidator");
+
+const validate = require("../middleware/validationMiddleware");
 
 const {
     protect

@@ -10,6 +10,7 @@ const wishlistRoutes = require("./wishlistRoutes");
 const reviewRoutes = require("./reviewRoutes");
 const chatRoutes = require("./chatRoutes");
 const videoRoutes = require("./videoRoutes");
+const notificationRoutes = require("./notificationRoutes");
 
 router.use("/auth", authRoutes);
 router.use("/courses", courseRoutes);
@@ -19,5 +20,6 @@ router.use("/wishlist", wishlistRoutes);
 router.use("/reviews", reviewRoutes);
 router.use("/chat", chatRoutes);
 router.use("/video", videoRoutes);
+router.use("/notifications", notificationRoutes);
 
 module.exports = router;

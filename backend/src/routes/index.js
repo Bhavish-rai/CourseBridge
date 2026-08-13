@@ -8,17 +8,16 @@ const categoryRoutes = require("./categoryRoutes");
 const exchangeRoutes = require("./exchangeRoutes");
 const wishlistRoutes = require("./wishlistRoutes");
 const reviewRoutes = require("./reviewRoutes");
+const chatRoutes = require("./chatRoutes");
+const videoRoutes = require("./videoRoutes");
 
 router.use("/auth", authRoutes);
-
 router.use("/courses", courseRoutes);
-
 router.use("/categories", categoryRoutes);
-
 router.use("/exchanges", exchangeRoutes);
-
 router.use("/wishlist", wishlistRoutes);
-
 router.use("/reviews", reviewRoutes);
+router.use("/chat", chatRoutes);
+router.use("/video", videoRoutes);
 
 module.exports = router;

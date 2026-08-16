@@ -32,11 +32,11 @@ function Login() {
 
             setLoading(true);
 
-            const res = await loginUser(form);
+            const response = await loginUser(form);
 
-            login(res.data);
+login(response.data);
 
-            navigate("/dashboard");
+navigate("/dashboard");
 
         }
 

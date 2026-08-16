@@ -1,0 +1,57 @@
+.activity-item{
+
+display:flex;
+
+align-items:center;
+
+gap:18px;
+
+padding:16px 0;
+
+border-bottom:1px solid #EEF2F7;
+
+}
+
+.activity-item:last-child{
+
+border:none;
+
+}
+
+.activity-icon{
+
+width:48px;
+
+height:48px;
+
+border-radius:14px;
+
+background:#EEF4FF;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+color:#2563EB;
+
+font-size:18px;
+
+}
+
+.activity-content h4{
+
+font-size:15px;
+
+margin-bottom:4px;
+
+}
+
+.activity-content span{
+
+font-size:13px;
+
+color:#64748B;
+
+}

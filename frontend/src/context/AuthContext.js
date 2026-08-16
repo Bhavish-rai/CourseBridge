@@ -36,25 +36,25 @@ setLoading(false);
 
 },[]);
 
-function login(data){
+function login(data) {
 
-localStorage.setItem(
+    localStorage.setItem(
 
-"token",
+        "token",
 
-data.token
+        data.token
 
-);
+    );
 
-localStorage.setItem(
+    localStorage.setItem(
 
-"user",
+        "user",
 
-JSON.stringify(data.user)
+        JSON.stringify(data.user)
 
-);
+    );
 
-setUser(data.user);
+    setUser(data.user);
 
 }
 

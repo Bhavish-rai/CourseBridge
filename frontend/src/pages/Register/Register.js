@@ -4,155 +4,233 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import {
-
-FaUser,
-
-FaEnvelope,
-
-FaLock
-
+    FaUser,
+    FaEnvelope,
+    FaLock
 } from "react-icons/fa";
 
 import Logo from "../../components/common/Logo";
 import Button from "../../components/common/Button";
 
-import {
+import { registerUser } from "../../services/authService";
 
-registerUser
+function Register() {
 
-} from "../../services/authService";
+    const navigate = useNavigate();
 
-function Register(){
+    const [loading, setLoading] = useState(false);
 
-const navigate=useNavigate();
+    const [form, setForm] = useState({
 
-const [form,setForm]=useState({
+        fullName: "",
 
-full_name:"",
+        username: "",
 
-email:"",
+        email: "",
 
-password:""
+        password: ""
 
-});
+    });
 
-async function handleSubmit(e){
+    function handleChange(e) {
 
-e.preventDefault();
+        setForm({
 
-try{
+            ...form,
 
-await registerUser(form);
+            [e.target.name]: e.target.value
 
-alert("Registration Successful");
+        });
 
-navigate("/login");
+    }
 
-}
+    async function handleSubmit(e) {
 
-catch(err){
+        e.preventDefault();
 
-alert(
+        try {
 
-err.response?.data?.message||
+            setLoading(true);
 
-"Registration Failed"
+            await registerUser(form);
 
-);
+            alert("Registration Successful!");
 
-}
+            navigate("/login");
 
-}
+        }
 
-function handleChange(e){
+        catch (error) {
 
-setForm({
+            alert(
 
-...form,
+                error.response?.data?.message ||
 
-[e.target.name]:e.target.value
+                "Registration Failed"
 
-});
+            );
 
-}
+        }
 
-return(
+        finally {
 
-<div className="auth-page">
+            setLoading(false);
 
-<div className="auth-card">
+        }
 
-<Logo/>
+    }
 
-<h1>Create Account</h1>
+    return (
 
-<p>Join CourseBridge today</p>
+        <div className="auth-page">
 
-<form onSubmit={handleSubmit}>
+            <div className="auth-card">
 
-<div className="input-group">
+                <Logo />
 
-<FaUser/>
+                <h1>
 
-<input
-name="full_name"
-placeholder="Full Name"
-onChange={handleChange}
-/>
+                    Create Account
 
-</div>
+                </h1>
 
-<div className="input-group">
+                <p>
 
-<FaEnvelope/>
+                    Join CourseBridge today
 
-<input
-name="email"
-type="email"
-placeholder="Email"
-onChange={handleChange}
-/>
+                </p>
 
-</div>
+                <form onSubmit={handleSubmit}>
 
-<div className="input-group">
+                    <div className="input-group">
 
-<FaLock/>
+                        <FaUser />
 
-<input
-name="password"
-type="password"
-placeholder="Password"
-onChange={handleChange}
-/>
+                        <input
 
-</div>
+                            type="text"
 
-<Button type="submit">
+                            name="fullName"
 
-Register
+                            placeholder="Full Name"
 
-</Button>
+                            value={form.fullName}
 
-</form>
+                            onChange={handleChange}
 
-<span>
+                            required
 
-Already have an account?
+                        />
 
-<Link to="/login">
+                    </div>
 
-Login
+                    <div className="input-group">
 
-</Link>
+                        <FaUser />
 
-</span>
+                        <input
 
-</div>
+                            type="text"
 
-</div>
+                            name="username"
 
-)
+                            placeholder="Username"
+
+                            value={form.username}
+
+                            onChange={handleChange}
+
+                            required
+
+                        />
+
+                    </div>
+
+                    <div className="input-group">
+
+                        <FaEnvelope />
+
+                        <input
+
+                            type="email"
+
+                            name="email"
+
+                            placeholder="Email"
+
+                            value={form.email}
+
+                            onChange={handleChange}
+
+                            required
+
+                        />
+
+                    </div>
+
+                    <div className="input-group">
+
+                        <FaLock />
+
+                        <input
+
+                            type="password"
+
+                            name="password"
+
+                            placeholder="Password"
+
+                            value={form.password}
+
+                            onChange={handleChange}
+
+                            required
+
+                        />
+
+                    </div>
+
+                    <Button
+
+                        type="submit"
+
+                    >
+
+                        {
+
+                            loading
+
+                                ?
+
+                                "Creating Account..."
+
+                                :
+
+                                "Register"
+
+                        }
+
+                    </Button>
+
+                </form>
+
+                <span>
+
+                    Already have an account?
+
+                    <Link to="/login">
+
+                        Login
+
+                    </Link>
+
+                </span>
+
+            </div>
+
+        </div>
+
+    );
 
 }
 

@@ -1,0 +1,33 @@
+.error-card{
+
+max-width:500px;
+
+margin:100px auto;
+
+background:white;
+
+padding:40px;
+
+border-radius:20px;
+
+text-align:center;
+
+box-shadow:0 15px 40px rgba(15,23,42,.08);
+
+}
+
+.error-card h2{
+
+margin-bottom:15px;
+
+color:#EF4444;
+
+}
+
+.error-card p{
+
+color:#64748B;
+
+line-height:1.7;
+
+}

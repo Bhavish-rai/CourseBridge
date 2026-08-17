@@ -1,0 +1,27 @@
+select{
+
+width:100%;
+
+padding:15px;
+
+border-radius:14px;
+
+border:1px solid #E2E8F0;
+
+font-size:15px;
+
+outline:none;
+
+background:white;
+
+transition:.3s;
+
+}
+
+select:focus{
+
+border-color:#2563EB;
+
+box-shadow:0 0 0 3px rgba(37,99,235,.15);
+
+}

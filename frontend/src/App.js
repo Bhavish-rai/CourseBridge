@@ -13,7 +13,10 @@ Navigate
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import Dashboard from "./pages/Dashboard/Dashboard";
-
+import Courses from "./pages/Courses/Courses";
+import CourseDetails from "./pages/Courses/CourseDetails";
+import AddCourse from "./pages/Courses/AddCourse";
+import EditCourse from "./pages/Courses/EditCourse";
 import Layout from "./components/layout/Layout";
 
 import ProtectedRoute from "./routes/ProtectedRoute";
@@ -68,6 +71,49 @@ element={
 
 }
 
+/>
+<Route
+    path="/courses"
+    element={
+        <ProtectedRoute>
+            <Layout>
+                <Courses />
+            </Layout>
+        </ProtectedRoute>
+    }
+/>
+
+<Route
+    path="/courses/add"
+    element={
+        <ProtectedRoute>
+            <Layout>
+                <AddCourse />
+            </Layout>
+        </ProtectedRoute>
+    }
+/>
+
+<Route
+    path="/courses/:id"
+    element={
+        <ProtectedRoute>
+            <Layout>
+                <CourseDetails />
+            </Layout>
+        </ProtectedRoute>
+    }
+/>
+
+<Route
+    path="/courses/edit/:id"
+    element={
+        <ProtectedRoute>
+            <Layout>
+                <EditCourse />
+            </Layout>
+        </ProtectedRoute>
+    }
 />
 
 

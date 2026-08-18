@@ -330,6 +330,7 @@ function AddCourse() {
 
             </form>
 
+
         </div>
 
     );
